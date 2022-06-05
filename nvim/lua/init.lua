@@ -9,9 +9,9 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protoco
 
 local on_attach = function(client, buffer)
 	-- Keymaps
-			vim.keymap.set("n", "<leader>df", vim.diagnostic.goto_next, {buffer = 0})
-		vim.keymap.set("n", "<leader>db", vim.diagnostic.goto_prev, {buffer = 0})
-		vim.keymap.set("n", "<leader>di", "<cmd>Telescope diagnostics<cr>", {buffer = 0})
+	vim.keymap.set("n", "<leader>df", vim.diagnostic.goto_next, {buffer = 0})
+	vim.keymap.set("n", "<leader>db", vim.diagnostic.goto_prev, {buffer = 0})
+	vim.keymap.set("n", "<leader>di", "<cmd>Telescope diagnostics<cr>", {buffer = 0})
 	vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, {buffer=0})
 	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, {buffer=0})
 	vim.keymap.set("n", "<leader>dj", vim.diagnostic.goto_next, {buffer=0})
@@ -49,6 +49,12 @@ end
 -- Load language specific settings modules
 --
 
+-- Flutter
+require("flutter-tools").setup{
+	capabilities = capabilities,
+	on_attach = on_attach,
+}
+
 -- Go LSP
 require('lspconfig').gopls.setup {
 	capabilities = capabilities,
@@ -61,13 +67,6 @@ require('lspconfig').gopls.setup {
 			staticcheck = true,
 		},
 	},
-
-}
-
--- Dart LSP 
-require'lspconfig'.dartls.setup{
-	capabilities = capabilities,
-	on_attach = on_attach,
 }
 
 -- Rust LSP
@@ -93,7 +92,6 @@ require'lspconfig'.tsserver.setup{
 --
 require'nvim-treesitter.configs'.setup {
   highlight = {
-			-- `false` will disable the whole extension
 			enable = true,
 			additional_vim_regex_highlight = false,
 	},

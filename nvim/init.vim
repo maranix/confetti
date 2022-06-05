@@ -20,12 +20,14 @@ Plug 'hrsh7th/cmp-path'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
 
+" NerdTree
+Plug 'preservim/nerdtree'
+
 " Rust Tools
 Plug 'simrat39/rust-tools.nvim'
 
-" Dart LSP
-Plug 'dart-lang/dart-vim-plugin'
-Plug 'Neevash/awesome-flutter-snippets'
+" Flutter
+Plug 'akinsho/flutter-tools.nvim'
 
 " Snippet engine
 Plug 'hrsh7th/vim-vsnip'
@@ -53,6 +55,12 @@ lua require('init')
 
 " Avoid showing extra messages when using completion
 set shortmess+=c
+
+" NerdTree Keybindings
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
 
 " Find files using Telescope command-line sugar.
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
