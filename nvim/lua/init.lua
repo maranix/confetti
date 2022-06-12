@@ -19,13 +19,27 @@ local on_attach = function(client, buffer)
 	vim.keymap.set("n", "<leader>dl", "<cmd>Telescope diagnostics<cr>", {buffer=0})
 	vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, {buffer=0})
 	vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {buffer=0})
-	vim.cmd([[
+
+	if client.server_capabilities.document_formatting then
+		vim.cmd([[
 			augroup formatting
 				autocmd! * <buffer>
 				autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()
 				autocmd BufWritePre <buffer> lua OrganizeImports(1000)
 			augroup END
 		]])
+	end
+
+	-- Set autocommands conditional on server_capabilities
+	if client.server_capabilities.document_highlight then
+		vim.cmd([[
+			augroup lsp_document_highlight
+				autocmd! * <buffer>
+				autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+				autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+			augroup END
+		]])
+	end
 end
 
 -- Organize imports function
@@ -53,6 +67,9 @@ end
 require("flutter-tools").setup{
 	capabilities = capabilities,
 	on_attach = on_attach,
+	settings = {
+		enableSnippets = true,
+	}
 }
 
 -- Go LSP
