@@ -16,6 +16,7 @@ export PATH=$HOME/.cargo/bin:$PATH
 
 # Flutter PATH
 export PATH=$HOME/.flutter/bin:$PATH
+export PATH="$PATH":"$HOME/.pub-cache/bin"
 
 # CCLS (LSP for C, C++, Obj C)
 export PATH=$HOME/.ccls/Release/:$PATH
