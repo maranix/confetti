@@ -26,9 +26,6 @@ Plug 'preservim/nerdtree'
 " Rust Tools
 Plug 'simrat39/rust-tools.nvim'
 
-" Flutter
-Plug 'akinsho/flutter-tools.nvim'
-
 " Snippet engine
 Plug 'hrsh7th/vim-vsnip'
 
@@ -37,7 +34,6 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
-" Prettier
 Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
 call plug#end()
 
@@ -67,5 +63,3 @@ nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-
-autocmd BufWritePre *.dart lua vim.lsp.buf.formatting_sync(nil, 1000)

@@ -63,15 +63,6 @@ end
 -- Load language specific settings modules
 --
 
--- Flutter
-require("flutter-tools").setup{
-	capabilities = capabilities,
-	on_attach = on_attach,
-	settings = {
-		enableSnippets = true,
-	}
-}
-
 -- Go LSP
 require('lspconfig').gopls.setup {
 	capabilities = capabilities,
