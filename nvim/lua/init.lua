@@ -1,4 +1,3 @@
---
 -- init.lua
 --
 
@@ -77,17 +76,19 @@ require('lspconfig').gopls.setup {
 	},
 }
 
+-- CCLS LSP
+require'lspconfig'.ccls.setup{
+	capabilities = capabilities,
+	on_attach = on_attach,
+}
+
 -- Rust LSP
 require("lspconfig").rust_analyzer.setup{
 	capabilities = capabilities,
 	on_attach = on_attach,
 }
 
--- CCLS LSP
-require'lspconfig'.ccls.setup{
-	capabilities = capabilities,
-	on_attach = on_attach,
-}
+require('rust-tools').setup()
 
 -- Typescript & Javascript LSP
 require'lspconfig'.tsserver.setup{
@@ -99,6 +100,8 @@ require'lspconfig'.tsserver.setup{
 -- Tree sitter settings
 --
 require'nvim-treesitter.configs'.setup {
+  ensure_installed = { "c", "cpp", "rust", "go", "javascript", "typescript" },
+
   highlight = {
 			enable = true,
 			additional_vim_regex_highlight = false,

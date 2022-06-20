@@ -1,6 +1,7 @@
 call plug#begin()
-" Tokyonight Theme
-Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+
+" Gruvbox-material theme
+Plug 'sainnhe/gruvbox-material'
 
 " Telescope
 Plug 'nvim-lua/plenary.nvim'
@@ -31,8 +32,11 @@ Plug 'hrsh7th/vim-vsnip'
 
 " Fuzzy finder
 Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+
+" Debugging
+Plug 'mfussenegger/nvim-dap'
+Plug 'nvim-lua/plenary.nvim'
 
 Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
 call plug#end()
@@ -45,12 +49,18 @@ set softtabstop=4
 set noswapfile
 set number
 set clipboard=unnamedplus " unnamed for Windows
-colorscheme tokyonight
+
+" Theme Configuration
+colorscheme gruvbox-material
+set background=dark
+let g:gruvbox_material_better_performance = 1
 
 lua require('init')
 
 " Avoid showing extra messages when using completion
 set shortmess+=c
+
+let mapleader = " "
 
 " NerdTree Keybindings
 nnoremap <leader>n :NERDTreeFocus<CR>
