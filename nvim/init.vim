@@ -48,7 +48,7 @@ set shiftwidth=4
 set softtabstop=4
 set noswapfile
 set number
-set clipboard=unnamedplus " unnamed for Windows
+set clipboard^=unnamed,unnamedplus " unnamed for Windows
 
 " Theme Configuration
 colorscheme gruvbox-material
