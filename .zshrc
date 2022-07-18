@@ -18,9 +18,6 @@ export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$HOME/.flutter/bin:$PATH
 export PATH="$PATH":"$HOME/.pub-cache/bin"
 
-# CCLS (LSP for C, C++, Obj C)
-export PATH=$HOME/.ccls/Release/:$PATH
-
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
