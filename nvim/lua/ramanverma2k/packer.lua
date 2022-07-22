@@ -61,6 +61,15 @@ return require('packer').startup(function(use)
     tag = 'nightly' -- optional, updated every week. (see issue #1193)
   }
 
+  use {
+    'prettier/vim-prettier',
+    run = 'yarn install --frozen-lockfile --production',
+  }
+
+  use {
+    'norcalli/nvim-colorizer.lua'
+  }
+
   if packer_bootstrap then
     require('packer').sync()
   end
