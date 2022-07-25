@@ -73,7 +73,6 @@ local on_attach = function(client, buffer)
   vim.keymap.set('n', 'rn', vim.lsp.buf.rename, { buffer = 0 })
   vim.keymap.set('n', 'ca', vim.lsp.buf.code_action, { buffer = 0 })
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, { buffer = 0 })
-  vim.keymap.set("n", 'di', "<cmd>Telescope diagnostics<cr>", { buffer = 0 })
 
   -- Autoformatting based on LSP
   if client.server_capabilities.documentFormattingProvider then
