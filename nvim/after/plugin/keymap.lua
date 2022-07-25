@@ -6,6 +6,8 @@ vim.g.mapleader = ' '
 
 -- Float Term keybinds
 map('n', '<leader>ftn' , '<Cmd>:FloatermNew<CR>', opts)
+map('n', '<leader>fth', '<Cmd>:FloatermNew --wintype=split --height=0.3<CR>', opts)
+map('n', '<leader>ftv', '<Cmd>:FloatermNew --wintype=vsplit --width=0.3<CR>', opts)
 map('n', '<leader>fts' , '<Cmd>:FloatermShow<CR>', opts)
 map('t', '<leader>ftt' , '<Cmd>:FloatermToggle<CR>', opts)
 map('t', '<C-]>' , '<Cmd>:FloatermPrev<CR>', opts)
