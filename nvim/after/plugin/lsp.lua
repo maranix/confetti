@@ -5,6 +5,7 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local lsp = require('lspconfig')
+local util = require('lspconfig/util')
 -- luasnip setup
 local luasnip = require 'luasnip'
 
@@ -119,6 +120,9 @@ lsp.gopls.setup {
   on_attach = on_attach,
 
   cmd = { "gopls", "serve" },
+  filetypes = {"go", "gomod"},
+  flags = { allow_incremental_sync = true, debounce_text_changes = 500 },
+  root_dir = util.root_pattern("go.work", "go.mod", ".git"),
 	settings = {
 		gopls = {
 			analyses = {
