@@ -70,6 +70,11 @@ return require('packer').startup(function(use)
     'norcalli/nvim-colorizer.lua'
   }
 
+  -- Lsp Lines
+  use {
+    "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+  }
+
   if packer_bootstrap then
     require('packer').sync()
   end
