@@ -75,6 +75,9 @@ return require('packer').startup(function(use)
     "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
   }
 
+  -- ALE
+  use 'dense-analysis/ale'
+
   if packer_bootstrap then
     require('packer').sync()
   end
