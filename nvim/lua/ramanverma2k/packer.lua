@@ -61,11 +61,13 @@ return require('packer').startup(function(use)
     tag = 'nightly' -- optional, updated every week. (see issue #1193)
   }
 
+  -- Prettier (Typescript, Javascript Formatter)
   use {
     'prettier/vim-prettier',
     run = 'yarn install --frozen-lockfile --production',
   }
 
+  -- Colorizer (hex, rgb, hsl color highlighter)
   use {
     'norcalli/nvim-colorizer.lua'
   }
@@ -75,7 +77,7 @@ return require('packer').startup(function(use)
     "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
   }
 
-  -- ALE
+  -- ALE (Syntax highlighting for Eslint)
   use 'dense-analysis/ale'
 
   if packer_bootstrap then
