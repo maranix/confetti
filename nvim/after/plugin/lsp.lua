@@ -154,7 +154,6 @@ lsp.rust_analyzer.setup {
   on_attach = on_attach,
 }
 
-
 --
 -- Web Development LSP Configs
 --
@@ -176,4 +175,22 @@ lsp.html.setup {
 lsp.tsserver.setup {
   capabilities = capabilities,
   on_attach = on_attach,
+}
+
+-- TailwindCSS LSP
+require'lspconfig'.tailwindcss.setup{
+  capabilities = capabilities,
+  on_attach = on_attach,
+
+  classAttributes = { 'class', 'className' },
+  lint = {
+      cssConflict = "warning",
+      invalidApply = "error",
+      invalidConfigPath = "error",
+      invalidScreen = "error",
+      invalidTailwindDirective = "error",
+      invalidVariant = "error",
+      recommendedVariantOrder = "warning"
+    },
+  rootPatterns = {'tailwind.config.js', 'tailwind.config.ts', 'postcss.config.js', 'postcss.config.ts'}
 }
