@@ -58,12 +58,7 @@ return require('packer').startup(function(use)
     end
   }
 
-  -- File Explorer
-  use {
-    'kyazdani42/nvim-tree.lua',
-    tag = 'nightly' -- optional, updated every week. (see issue #1193)
-  }
-
+  -- Prettier
   use {
     'prettier/vim-prettier',
     run = 'yarn install --frozen-lockfile --production',
