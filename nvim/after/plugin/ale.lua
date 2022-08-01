@@ -1,13 +1,13 @@
 vim.g.ale_linters = {
-  javascript = {'standard'},
-  typescript = {'standard'},
-  typescriptreact = {'standard'},
+  javascript = {'eslint'},
+  typescript = {'eslint'},
+  typescriptreact = {'eslint'},
 }
 
 vim.g.ale_fixers = {
-  javascript = {'standard'},
-  typescript = {'standard'},
-  typescriptreact = {'standard'},
+  javascript = {'eslint'},
+  typescript = {'eslint'},
+  typescriptreact = {'eslint'},
 }
 
 vim.g.ale_linters_explicit = 1
