@@ -115,6 +115,11 @@ _G.packer_plugins = {
     path = "/home/r2k/.local/share/nvim/site/pack/packer/start/lsp_lines.nvim",
     url = "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
   },
+  ["lspsaga.nvim"] = {
+    loaded = true,
+    path = "/home/r2k/.local/share/nvim/site/pack/packer/start/lspsaga.nvim",
+    url = "https://github.com/glepnir/lspsaga.nvim"
+  },
   ["nvim-cmp"] = {
     loaded = true,
     path = "/home/r2k/.local/share/nvim/site/pack/packer/start/nvim-cmp",
@@ -159,11 +164,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/r2k/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
     url = "https://github.com/folke/tokyonight.nvim"
-  },
-  ["vim-floaterm"] = {
-    loaded = true,
-    path = "/home/r2k/.local/share/nvim/site/pack/packer/start/vim-floaterm",
-    url = "https://github.com/voldikss/vim-floaterm"
   },
   ["vim-prettier"] = {
     loaded = true,

@@ -41,8 +41,11 @@ return require('packer').startup(function(use)
   -- Emmet support 
   use 'mattn/emmet-vim'
 
-  -- Terminal Stuff
-  use('voldikss/vim-floaterm')
+  -- Lspsaga
+  use({
+      "glepnir/lspsaga.nvim",
+      branch = "main",
+  })
 
   -- LazyGit
   use('kdheepak/lazygit.nvim')
@@ -61,13 +64,11 @@ return require('packer').startup(function(use)
     tag = 'nightly' -- optional, updated every week. (see issue #1193)
   }
 
-  -- Prettier (Typescript, Javascript Formatter)
   use {
     'prettier/vim-prettier',
     run = 'yarn install --frozen-lockfile --production',
   }
 
-  -- Colorizer (hex, rgb, hsl color highlighter)
   use {
     'norcalli/nvim-colorizer.lua'
   }
@@ -77,7 +78,7 @@ return require('packer').startup(function(use)
     "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
   }
 
-  -- ALE (Syntax highlighting for Eslint)
+  -- ALE
   use 'dense-analysis/ale'
 
   if packer_bootstrap then

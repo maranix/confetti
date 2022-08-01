@@ -71,9 +71,16 @@ local on_attach = function(client, buffer)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = 0 })
   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, { buffer = 0 })
   vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, { buffer = 0 })
-  vim.keymap.set('n', 'rn', vim.lsp.buf.rename, { buffer = 0 })
-  vim.keymap.set('n', 'ca', vim.lsp.buf.code_action, { buffer = 0 })
-  vim.keymap.set('n', 'gr', vim.lsp.buf.references, { buffer = 0 })
+
+  -- Find the cursor word definition and reference
+  vim.keymap.set("n", "gr", "<Cmd>Lspsaga lsp_finder<CR>" , opts)
+
+  -- code action
+  vim.keymap.set("n", "<leader>ca", "<Cmd>Lspsaga code_action<CR>" , opts)
+  vim.keymap.set("v", "<leader>ca", "<cmd><C-U>Lspsaga range_code_action<CR>", { silent = true,noremap = true })
+
+  -- rename
+  vim.keymap.set("n", "rn", "<Cmd>Lspsaga rename<CR>" , opts)
 
   -- Autoformatting based on LSP
   if client.server_capabilities.documentFormattingProvider then
