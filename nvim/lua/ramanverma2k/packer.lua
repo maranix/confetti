@@ -58,6 +58,9 @@ return require('packer').startup(function(use)
     end
   }
 
+  -- NERDtree
+  use { 'preservim/nerdtree' }
+
   -- Prettier
   use {
     'prettier/vim-prettier',

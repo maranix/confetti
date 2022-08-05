@@ -120,6 +120,11 @@ _G.packer_plugins = {
     path = "/home/r2k/.local/share/nvim/site/pack/packer/start/lspsaga.nvim",
     url = "https://github.com/glepnir/lspsaga.nvim"
   },
+  nerdtree = {
+    loaded = true,
+    path = "/home/r2k/.local/share/nvim/site/pack/packer/start/nerdtree",
+    url = "https://github.com/preservim/nerdtree"
+  },
   ["nvim-cmp"] = {
     loaded = true,
     path = "/home/r2k/.local/share/nvim/site/pack/packer/start/nvim-cmp",
