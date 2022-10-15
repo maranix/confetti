@@ -16,7 +16,6 @@ require("mason-lspconfig").setup({
 		"emmet_ls",
 		"gopls",
 		"html",
-    "prettierd",
 		"tailwindcss",
 		"tsserver",
 		"rust_analyzer",
