@@ -1,7 +1,7 @@
-local remap = require("ramanverma2k.keymap").remap
+local opts = { noremap = true, silent = true }
 
-remap("n", "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>")
-remap("n", "<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<cr>")
-remap("n", "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>")
-remap("n", "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>")
-remap("n", "<leader>fd", "<cmd>lua require('telescope.builtin').diagnostics()<cr>")
+vim.api.nvim_set_keymap("n", "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>", opts)
+vim.api.nvim_set_keymap("n", "<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<cr>", opts)
+vim.api.nvim_set_keymap("n", "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>", opts)
+vim.api.nvim_set_keymap("n", "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>", opts)
+vim.api.nvim_set_keymap("n", "<leader>fd", "<cmd>lua require('telescope.builtin').diagnostics()<cr>", opts)

@@ -1,16 +1,10 @@
---Enable (broadcasting) snippet capability for completion
-local capabilities = vim.lsp.protocol.make_client_capabilities()
--- Add additional capabilities supported by nvim-cmp
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
-capabilities.textDocument.completion.completionItem.snippetSupport = true
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-local lsp = require('lspconfig')
-local util = require('lspconfig/util')
--- luasnip setup
-local luasnip = require 'luasnip'
+local lspconfig = require('lspconfig')
+local util = require("lspconfig/util")
+local luasnip = require("luasnip")
+local cmp = require("cmp")
 
--- nvim-cmp setup
-local cmp = require 'cmp'
 cmp.setup {
   snippet = {
     expand = function(args)
@@ -51,14 +45,11 @@ cmp.setup {
   }
 }
 
-
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, buffer)
-  -- Mappings.
-  
-  -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-  local opts = { noremap=true, silent=true }
+  -- Mappings
+  -- LSP
   vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, opts)
   vim.keymap.set('n', '<leader>df', vim.diagnostic.goto_prev, opts)
   vim.keymap.set('n', '<leader>db', vim.diagnostic.goto_next, opts)
@@ -72,26 +63,33 @@ local on_attach = function(client, buffer)
   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, { buffer = 0 })
   vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, { buffer = 0 })
 
-  -- Find the cursor word definition and reference
-  vim.keymap.set("n", "gr", "<Cmd>Lspsaga lsp_finder<CR>" , opts)
-
   -- code action
-  vim.keymap.set("n", "<leader>ca", "<Cmd>Lspsaga code_action<CR>" , opts)
-  vim.keymap.set("v", "<leader>ca", "<cmd><C-U>Lspsaga range_code_action<CR>", { silent = true,noremap = true })
+  vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action , opts)
 
   -- rename
-  vim.keymap.set("n", "rn", "<Cmd>Lspsaga rename<CR>" , opts)
+  vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
 
   -- Autoformatting based on LSP
-  if client.server_capabilities.documentFormattingProvider then
-		vim.cmd([[
-			augroup formatting
-				autocmd! * <buffer>
-				autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()
-				autocmd BufWritePre <buffer> lua OrganizeImports(1000)
-			augroup END
-		]])
-	end
+  if not (client.name == 'tsserver') then
+    if client.name == 'eslint' then
+      vim.cmd([[
+        augroup eslintFormat
+          autocmd! * <buffer>
+          autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js EslintFixAll
+        augroup END
+      ]])
+    end
+
+    if client.server_capabilities.documentFormattingProvider then
+        vim.cmd([[
+          augroup formatting
+            autocmd! * <buffer>
+            autocmd BufWritePre <buffer> lua vim.lsp.buf.format()
+            autocmd BufWritePre <buffer> lua OrganizeImports(1000)
+          augroup END
+        ]])
+    end
+  end
 end
 
 -- Organize imports function
@@ -112,9 +110,14 @@ function OrganizeImports(timeoutms)
 end
 
 --
+-- Lua LSP
+--
+lspconfig.sumneko_lua.setup{}
+
+--
 -- C, C++, ObjC, ObjC++, cuda LSP
 --
-lsp.clangd.setup {
+lspconfig.clangd.setup {
   capabilities = capabilities,
   on_attach = on_attach,
 }
@@ -122,7 +125,7 @@ lsp.clangd.setup {
 --
 -- Golang LSP Configs
 --
-lsp.gopls.setup {
+lspconfig.gopls.setup {
   capabilities = capabilities,
   on_attach = on_attach,
 
@@ -143,7 +146,7 @@ lsp.gopls.setup {
 --
 -- Flutter Development Lsp Config
 --
-lsp.dartls.setup {
+lspconfig.dartls.setup {
   capabilities = capabilities,
   on_attach = on_attach,
 
@@ -152,52 +155,56 @@ lsp.dartls.setup {
   }
 }
 
-
 --
 -- Rust Development Configs
 --
-lsp.rust_analyzer.setup {
+lspconfig.rust_analyzer.setup{
   capabilities = capabilities,
   on_attach = on_attach,
 }
 
---
--- Web Development LSP Configs
---
-
--- CSSLS (Language Server for CSS)
-lsp.cssls.setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
-
-}
-
--- HTML LSP
-lsp.html.setup {
+-- Web/Javascript LSP Configurations
+lspconfig.tsserver.setup{
   capabilities = capabilities,
   on_attach = on_attach,
 }
 
--- Typescript/Javascript LSP
-lsp.tsserver.setup {
+lspconfig.eslint.setup {
   capabilities = capabilities,
   on_attach = on_attach,
 }
 
--- TailwindCSS LSP
-require'lspconfig'.tailwindcss.setup{
+lspconfig.emmet_ls.setup{
+  capabilities = capabilities,
+  on_attach = on_attach,
+}
+
+lspconfig.cssls.setup{
+  capabilities = capabilities,
+  on_attach = on_attach,
+}
+
+lspconfig.html.setup{
+  capabilities = capabilities,
+  on_attach = on_attach,
+}
+
+lspconfig.tailwindcss.setup{
   capabilities = capabilities,
   on_attach = on_attach,
 
-  classAttributes = { 'class', 'className' },
-  lint = {
-      cssConflict = "warning",
-      invalidApply = "error",
-      invalidConfigPath = "error",
-      invalidScreen = "error",
-      invalidTailwindDirective = "error",
-      invalidVariant = "error",
-      recommendedVariantOrder = "warning"
-    },
-  rootPatterns = {'tailwind.config.js', 'tailwind.config.ts', 'postcss.config.js', 'postcss.config.ts'}
+  settings = {
+      tailwindCSS = {
+      classAttributes = { 'class', 'className' },
+      lint = {
+        cssConflict = "warning",
+        invalidApply = "error",
+        invalidConfigPath = "error",
+        invalidScreen = "error",
+        invalidTailwindDirective = "error",
+        invalidVariant = "error",
+        recommendedVariantOrder = "warning"
+      },
+    }
+  }
 }

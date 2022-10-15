@@ -10,9 +10,7 @@ set.softtabstop = 2
 set.expandtab = true
 
 -- Enable line numbers
-set.number = true
-
-set.termguicolors = true
+set.relativenumber = true
 
 -- This is evil but i am leaving it here just-in-case.
 -- Make mouse iteractable with windows and buffers.
