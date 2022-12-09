@@ -1,6 +1,6 @@
 #! /bin/sh
 
-feh --recursive --bg-fill --randomize ~/.config/wallpapers/images/ &
+feh --recursive --no-fehbg --bg-fill --randomize ~/.config/wallpapers/images/ &
 eww daemon
 
 pgrep -x sxhkd > /dev/null || sxhkd &
