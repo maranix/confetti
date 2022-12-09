@@ -10,14 +10,14 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # GO
-export =$PATH:/usr/local/go/bin
+export PATH=$PATH:/usr/local/go/bin
 
 # Cargo 
-export =$PATH:$HOME/.cargo/bin
+export PATH=$PATH:$HOME/.cargo/bin
 
 # Flutter 
-export =$PATH:$HOME/.flutter/bin:
-export ="$PATH":"$HOME/.pub-cache/bin"
+export PATH=$PATH:$HOME/.flutter/bin:
+export PATH="$PATH":"$HOME/.pub-cache/bin"
 
 export ZSH=$HOME/.oh-my-zsh
 
