@@ -18,6 +18,13 @@ return require('packer').startup(function(use)
     run = ':TSUpdate'
   }
 
+  -- Telescope
+  use {
+  'nvim-telescope/telescope.nvim', tag = '0.1.0',
+  -- or                            , branch = '0.1.x',
+    requires = { {'nvim-lua/plenary.nvim'} }
+  }
+
   -- Lsp
   use {
     'VonHeikemen/lsp-zero.nvim',
@@ -51,6 +58,5 @@ return require('packer').startup(function(use)
   use 'mbbill/undotree'
 
   -- Colorizer
-
-
+  use 'NvChad/nvim-colorizer.lua'
 end)
