@@ -40,4 +40,17 @@ return require('packer').startup(function(use)
       {'rafamadriz/friendly-snippets'},
     }
   }
+
+  --
+  -- Tpope
+  --
+  use 'tpope/vim-commentary'
+  use 'tpope/vim-surround'
+
+  -- UndoTree
+  use 'mbbill/undotree'
+
+  -- Colorizer
+
+
 end)
