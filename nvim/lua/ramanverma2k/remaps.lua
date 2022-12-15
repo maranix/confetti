@@ -28,3 +28,6 @@ vim.keymap.set("v", "<leader>d", "\"_d")
 
 -- Search & replace in the entire buffer
 vim.keymap.set("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
+
+-- Lsp Format Remap
+vim.keymap.set("n", "<leader>f", "<Cmd>:LspZeroFormat<CR>")
