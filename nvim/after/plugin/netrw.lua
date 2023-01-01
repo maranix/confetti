@@ -1,3 +1,0 @@
-vim.cmd[[
-let g:netrw_keepdir = 0
-]]
