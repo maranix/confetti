@@ -66,8 +66,8 @@ zplug load
 
 source $ZSH/oh-my-zsh.sh
 
-# Use FZF searching history, files and changing directory.
-[ -f /usr/share/fzf/shell/key-bindings.zsh ] && source /usr/share/fzf/shell/key-bindings.zsh
-
 # Enable Vim Mode ( Esc to enter )
 bindkey -v
+
+# Use FZF searching history, files and changing directory.
+[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ] && source /usr/share/doc/fzf/examples/key-bindings.zsh
