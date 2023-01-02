@@ -3,6 +3,9 @@ local lsp = require('lsp-zero')
 lsp.preset('recommended')
 
 lsp.ensure_installed({
+  -- Install libstdc++-12-dev if it isn't working properly
+  -- This usually happens in Ubuntu 22.04 and related distros.
+  'clangd',
   'gopls',
   'rust_analyzer',
   'sumneko_lua',
