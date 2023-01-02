@@ -1,6 +1,4 @@
 function ColorMeUp(theme)
-  theme = theme or 'kanagawa'
-
   if theme == 'gruvbox-material' then
     vim.cmd('set background=dark')
     vim.g.gruvbox_material_background = 'hard'
@@ -8,9 +6,14 @@ function ColorMeUp(theme)
     vim.g.gruvbox_material_enable_bold = 1
     vim.g.gruvbox_material_transparent_background = 1
     vim.g.gruvbox_material_better_performance = 1
-  end
+    vim.cmd.colorscheme(theme)
+  else
+    require('kanagawa').setup({
+      transparent = true
+    })
 
-  vim.cmd.colorscheme(theme)
+    vim.cmd.colorscheme('kanagawa')
+  end
 end
 
 ColorMeUp()
