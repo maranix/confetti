@@ -46,8 +46,15 @@ lsp.setup_nvim_cmp({
     sources = {
         { name = 'nvim_lsp' },
         { name = 'buffer', keyword_length = 3 },
+        { name = 'path', keyword_length = 3 },
         { name = 'luasnip', keyword_length = 4 },
         { name = 'codeium', keyword_length = 5 },
+    },
+    sorting = {
+        comparators = {
+            cmp.config.compare.exact,
+            cmp.config.compare.recently_used,
+        }
     }
 })
 

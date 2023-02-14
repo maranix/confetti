@@ -77,7 +77,6 @@ require("lazy").setup({
             require("codeium").setup({})
         end
     },
-
     -- Others
     { 'theprimeagen/harpoon' },
     { 'mbbill/undotree' },
