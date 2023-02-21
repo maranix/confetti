@@ -6,21 +6,9 @@ lsp.ensure_installed({
     -- Install libstdc++-12-dev if it isn't working properly
     -- This usually happens in Ubuntu 22.04 and related distros.
     'clangd',
-    'gopls',
     'rust_analyzer',
-    'sumneko_lua',
+    'lua_ls',
     'tsserver',
-})
-
--- Fix Undefined global 'vim'
-lsp.configure('sumneko_lua', {
-    settings = {
-        Lua = {
-            diagnostics = {
-                globals = { 'vim' }
-            }
-        },
-    }
 })
 
 lsp.setup_servers({
@@ -45,8 +33,8 @@ lsp.setup_nvim_cmp({
     mapping = cmp_mappings,
     sources = {
         { name = 'nvim_lsp' },
-        { name = 'buffer', keyword_length = 3 },
-        { name = 'path', keyword_length = 3 },
+        { name = 'buffer',  keyword_length = 3 },
+        { name = 'path',    keyword_length = 3 },
         { name = 'luasnip', keyword_length = 4 },
         { name = 'codeium', keyword_length = 5 },
     },

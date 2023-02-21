@@ -65,18 +65,6 @@ require("lazy").setup({
         }
     },
 
-    -- Codium
-    {
-        "jcdickinson/codeium.nvim",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "MunifTanjim/nui.nvim",
-            "hrsh7th/nvim-cmp",
-        },
-        config = function()
-            require("codeium").setup({})
-        end
-    },
     -- Others
     { 'theprimeagen/harpoon' },
     { 'mbbill/undotree' },
