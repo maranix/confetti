@@ -14,22 +14,19 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
     {
-        'rose-pine/neovim',
-        name = 'rose-pine',
+        'rebelot/kanagawa.nvim',
+        name = 'kanagawa',
         lazy = false,
         priority = 1000,
         config = function()
-            require("rose-pine").setup({
-                disable_background = true,
-            })
-            vim.cmd('colorscheme rose-pine')
+            require("kanagawa").load("wave")
         end
     },
 
     -- Telescope
     {
         'nvim-telescope/telescope.nvim',
-        tag = '0.1.0',
+        tag = '0.1.1',
         dependencies = { 'nvim-lua/plenary.nvim' }
     },
 
@@ -42,7 +39,7 @@ require("lazy").setup({
     -- Lsp
     {
         'VonHeikemen/lsp-zero.nvim',
-        branch = 'v1.x',
+        branch = 'v2.x',
         dependencies = {
             -- LSP Support
             { 'neovim/nvim-lspconfig' },
@@ -58,7 +55,8 @@ require("lazy").setup({
             { 'hrsh7th/cmp-nvim-lua' },
 
             -- Snippets
-            { 'L3MON4D3/LuaSnip',
+            {
+                'L3MON4D3/LuaSnip',
                 version = '1.*',
             },
             { 'rafamadriz/friendly-snippets' },
@@ -68,7 +66,12 @@ require("lazy").setup({
     -- Others
     { 'theprimeagen/harpoon' },
     { 'mbbill/undotree' },
-    { 'tpope/vim-commentary' },
+    {
+        'numToStr/Comment.nvim',
+        config = function()
+            require('Comment').setup()
+        end
+    },
     { 'tpope/vim-surround' },
     { 'kdheepak/lazygit.nvim' },
 })

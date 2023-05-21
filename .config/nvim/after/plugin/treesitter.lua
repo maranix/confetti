@@ -6,7 +6,6 @@ require 'nvim-treesitter.configs'.setup {
     'dart',
     'dockerfile',
     'go',
-    'help',
     'javascript',
     'json',
     'lua',
@@ -14,6 +13,7 @@ require 'nvim-treesitter.configs'.setup {
     'tsx',
     'typescript',
     'vim',
+    'vimdoc',
     'yaml',
   },
 
