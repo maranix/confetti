@@ -8,7 +8,7 @@ return {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
     },
-    config = function ()
+    config = function()
         mason.setup()
         cmp.setup()
         lsp.setup()
