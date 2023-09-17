@@ -2,8 +2,12 @@ return {
     {
         'rose-pine/neovim',
         name = 'rose-pine',
+    },
+    {
+        'nyoom-engineering/oxocarbon.nvim',
         config = function()
-            vim.cmd.colorscheme('rose-pine')
+            vim.opt.background = "dark"
+            vim.cmd.colorscheme('oxocarbon')
         end
     }
 }
