@@ -8,7 +8,7 @@ return {
         outline = true,
         suggestFromUnimportedLibraries = true
     },
-    root_dir = require('lspconfig.util').root_pattern({ 'pubspec.yaml' }),
+    root_dir = require('lspconfig.util').root_pattern('pubspec.yaml'),
     setting = {
         dart = {
             completeFunctionCalls = true,
